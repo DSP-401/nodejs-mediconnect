@@ -4,7 +4,7 @@
   "description": "learn db operation with node ",
   "main": "app.js",
   "scripts": {
-    "start": "npm start",
+    "start": "node server.js",
     "build": "npm run build"
   },
   "author": "Darshan",
