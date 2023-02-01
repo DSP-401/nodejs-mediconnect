@@ -4,9 +4,10 @@
   "description": "learn db operation with node ",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "nodemon server.js",
+    "build": "npm run build"
   },
-  "author": "Vanraj kalsariya",
+  "author": "Darshan",
   "license": "ISC",
   "dependencies": {
     "@aws-sdk/client-s3": "^3.254.0",
