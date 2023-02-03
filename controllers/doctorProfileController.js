@@ -28,7 +28,8 @@ exports.getProfile = (req, res) => {
 exports.profile = (req, res) => {
 
   const profile = {
-    name: req.body.name,
+    firstname: req.body.firstname,
+    lastname: req.body.lastname,
     gender: req.body.gender,
     dob: req.body.dob,
     phone: req.body.phone,
@@ -41,12 +42,12 @@ exports.profile = (req, res) => {
   };
 
   if (
-    !profile.name ||
+    !profile.firstname ||
+    !profile.lastname ||
     !profile.gender ||
     !profile.dob ||
     !profile.phone ||
     !profile.speciality ||
-    !profile.expericance ||
     !profile.expericance ||
     !profile.fees ||
     !profile.degree_name ||
@@ -63,8 +64,8 @@ exports.profile = (req, res) => {
     (err, result) => {
       if (!result.length) {
         sql.query(
-          `INSERT INTO doctor (name, gender, dob, phone, speciality, expericance, fees, degree_name, user_id, degree_of_year, onBoarding ) 
-                    VALUES ('${profile.name}', '${profile.gender}', '${profile.dob}', '${profile.phone}', '${profile.speciality}', '${profile.expericance}', '${profile.fees}', '${profile.degree_name}', '${profile.user_id}', '${profile.degree_of_year}', 'yes')`,
+          `INSERT INTO doctor (firstname, lastname, gender, dob, phone, speciality, expericance, fees, degree_name, user_id, degree_of_year, onBoarding ) 
+                    VALUES ('${profile.firstname}', '${profile.lastname}' , '${profile.gender}', '${profile.dob}', '${profile.phone}', '${profile.speciality}', '${profile.expericance}', '${profile.fees}', '${profile.degree_name}', '${profile.user_id}', '${profile.degree_of_year}', 'yes')`,
           (erro, resultt) => {
             if (resultt.affectedRows === 1) {
               return res.status(200).send({

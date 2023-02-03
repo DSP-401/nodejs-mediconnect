@@ -2,6 +2,8 @@ const sql = require("../models/db.js");
 
 exports.patientOnBoard = (req, res) => {
   const patient_details = {
+    firstname: req.body.firstname,
+    lastname: req.body.lastname,
     name: req.body.name,
     gender: req.body.gender,
     dob: req.body.dob,
@@ -13,7 +15,8 @@ exports.patientOnBoard = (req, res) => {
   };
 
   if (
-    !patient_details.name ||
+    !patient_details.firstname ||
+    !patient_details.lastname ||
     !patient_details.gender ||
     !patient_details.dob ||
     !patient_details.phone ||
@@ -32,8 +35,8 @@ exports.patientOnBoard = (req, res) => {
     (e, r) => {
       if (!r.length) {
         sql.query(
-          `INSERT INTO patient (name, gender, dob, phone,insurance_company_name, insurance_code, insurance_joining_date, doctor_id ) 
-                              VALUES ('${patient_details.name}', '${patient_details.gender}', '${patient_details.dob}', '${patient_details.phone}', '${patient_details.insurance_company_name}', '${patient_details.insurance_code}', '${patient_details.insurance_joining_date}', '${patient_details.doctor_id}')`,
+          `INSERT INTO patient (firstname, lastname, gender, dob, phone,insurance_company_name, insurance_code, insurance_joining_date, doctor_id ) 
+                              VALUES ('${patient_details.firstname}', '${patient_details.lastname}', '${patient_details.gender}', '${patient_details.dob}', '${patient_details.phone}', '${patient_details.insurance_company_name}', '${patient_details.insurance_code}', '${patient_details.insurance_joining_date}', '${patient_details.doctor_id}')`,
           (erro, resultt) => {
             if (resultt.affectedRows === 1) {
               if (resultt.insertId) {
