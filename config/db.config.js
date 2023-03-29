@@ -1,6 +1,6 @@
 module.exports = {
-    HOST: "localhost",
-    USER: "root",
-    PASSWORD: "",
-    DB: "db_mediconnect"
-  };
+  HOST: "loopedincode.com",
+  USER: "ketan",
+  PASSWORD: "A2g76im5%",
+  DB: "pesto",
+};

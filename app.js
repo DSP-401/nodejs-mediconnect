@@ -1,4 +1,3 @@
-
 const express = require("express");
 const app = express();
 const path = require("path");
@@ -26,7 +25,9 @@ app.use(function (req, res, next) {
 });
 
 const tourRouter = require("./routes/tourRoutes");
+const calendary = require("./routes/calendary");
 
 app.use("/api/v1", tourRouter);
+app.use("/api/calendary", calendary);
 
 module.exports = app;
