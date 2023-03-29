@@ -5,6 +5,7 @@ const {
   setTimeSlots,
   updateTimeSlots,
 } = require("../controllers/calendary/doctors");
+const { getBookingSlots } = require("../controllers/calendary/patients");
 
 router.get("/test", (req, res) => {
   res.send("Calendary test.");
@@ -14,5 +15,7 @@ router.get("/test", (req, res) => {
 router.get("/doctor/available-time-slots", getAvailableTimeSlots);
 router.post("/doctor/create", setTimeSlots);
 router.put("/doctor/update", updateTimeSlots);
+
+router.get("/patient/bookings", getBookingSlots);
 
 module.exports = router;
