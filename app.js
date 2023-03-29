@@ -3,8 +3,11 @@ const app = express();
 const path = require("path");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const morgan = require("morgan");
 
 app.use(express.json());
+
+app.use(morgan("combined"));
 
 app.use(bodyParser.json());
 
