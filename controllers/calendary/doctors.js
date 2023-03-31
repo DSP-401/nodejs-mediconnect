@@ -96,9 +96,11 @@ const setTimeSlots = (req, res) => {
           db.query(
             `INSERT INTO TIME_SLOTS (doctor_id, patient_id, month, year, day, slot_name, status) VALUES (${
               req.body.doctor_id
-            },${req.body.patient_id}, ${parseInt(req.body.month) + 1}, ${
-              req.body.year
-            }, ${req.body.day}, "${req.body.slot}", ${req.body.status})`,
+            },${req.body.patient_id ? req.body.patient_id : 0}, ${
+              parseInt(req.body.month) + 1
+            }, ${req.body.year}, ${req.body.day}, "${req.body.slot}", ${
+              req.body.status
+            })`,
             (err, result) => {
               if (err) {
                 res.status(500).send(err);
