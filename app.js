@@ -1,11 +1,13 @@
-
 const express = require("express");
 const app = express();
 const path = require("path");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const morgan = require("morgan");
 
 app.use(express.json());
+
+app.use(morgan("combined"));
 
 app.use(bodyParser.json());
 
@@ -26,7 +28,9 @@ app.use(function (req, res, next) {
 });
 
 const tourRouter = require("./routes/tourRoutes");
+const calendary = require("./routes/calendary");
 
 app.use("/api/v1", tourRouter);
+app.use("/api/calendary", calendary);
 
 module.exports = app;
