@@ -1,5 +1,9 @@
 const db = require("../../models/db");
-// const { getTimeSlots, getDaysInMonth } = require("../calendary/utility");
+const {
+  getTimeSlots,
+  getDaysInMonth,
+  sendMessage,
+} = require("../calendary/utility");
 
 const getBookingSlots = (req, res) => {
   if (
@@ -12,13 +16,20 @@ const getBookingSlots = (req, res) => {
   } else {
     db.query(
       `SELECT * FROM TIME_SLOTS WHERE patient_id = ? AND day = ? AND month = ? AND year = ?`,
-      [req.query.patient_id, req.query.day, req.query.month, req.query.year],
+      [
+        req.query.patient_id,
+        req.query.day,
+        parseInt(req.query.month) + 1,
+        req.query.year,
+      ],
       (err, result) => {
         if (err) {
           console.log(err);
+          sendMessage(res, err, 500);
         }
         if (result) {
-          res.status(200).send(result);
+          // res.status(200).send(result);
+          sendMessage(res, result, 200);
         }
       }
     );

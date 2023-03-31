@@ -22,7 +22,12 @@ const getDaysInMonth = (year, month) => {
   return new Date(year, month, 0).getDate();
 };
 
+const sendMessage = (response, data, status) => {
+  response.status(status).send({ statusCode: status, data });
+};
+
 module.exports = {
   getTimeSlots,
   getDaysInMonth,
+  sendMessage,
 };
